@@ -18,9 +18,9 @@ mix.js('resources/js/app.js', 'public/js')
     ]);
     
     //NOTE disable this and npm run dev for server deploy
-    mix.webpackConfig({
-        output: {
-        publicPath: '/STR/',
-            chunkFilename: 'js/chunks/[name].js',
-        },
-    });
+    // mix.webpackConfig({
+    //     output: {
+    //     publicPath: '/STR/',
+    //         chunkFilename: 'js/chunks/[name].js',
+    //     },
+    // });

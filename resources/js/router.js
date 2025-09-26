@@ -7,7 +7,8 @@ Vue.use(VueRouter)
 
 let router = new VueRouter({
     mode: 'history',
-    base: '/STR/',  //NOTE disable this and npm run dev for server deploy
+    // base: '/STR/',  
+    //NOTE disable this and npm run dev for server deploy
     routes: [
         {
             path: '/home',

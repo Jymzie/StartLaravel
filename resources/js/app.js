@@ -13,7 +13,7 @@ Vue.prototype.$socket = socket;
 
 Vue.use(Vuetify)
 
-Vue.prototype.$url = window.location.origin+'/STR'
+Vue.prototype.$url = window.location.origin
 
 
 const app = new Vue({

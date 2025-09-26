@@ -12,11 +12,12 @@
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
-    #RewriteRule ^ %1 [L,R=301]         #NOTE enable this and
+    RewriteRule ^ %1 [L,R=301]        
+     #NOTE enable this and
 
     #NOTE disable this if needed for server deploy
-        RewriteBase /STR/
-        RewriteRule ^(.*)/$ /STR/$1 [L,R=301]
+        # RewriteBase /STR/
+        # RewriteRule ^(.*)/$ /STR/$1 [L,R=301]
 
     # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
