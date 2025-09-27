@@ -16,6 +16,11 @@ let router = new VueRouter({
             component: () => import('./components/Home'),
         },
         {
+            path: '/UpDown',
+            name: 'UpDown',
+            component: () => import('./components/UpDown'),
+        },
+        {
             path: '/Grid',
             name: 'Grid',
             component: () => import('./components/Grid'),

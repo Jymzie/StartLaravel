@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PlayController;
+use App\Http\Controllers\UpDownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,4 @@ Route::resource('master', MasterController::class);
 Route::resource('pdf', PDFController::class);
 Route::resource('capture', CaptureController::class);
 Route::resource('play', PlayController::class);
+Route::resource('UpDown',UpDownController::class);

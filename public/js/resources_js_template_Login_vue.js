@@ -71,6 +71,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -102,9 +104,21 @@ __webpack_require__.r(__webpack_exports__);
           UserID: 'The Employee ID field is required',
           Password: ''
         };else {
-          console.log(id);
+          this.$store.commit("login", {
+            code: this.login.UserID,
+            name: 'Jimwell'
+          });
+          this.$emit('setcookies');
+          this.$router.push('/home');
         }
-      } else console.log(id);
+      } else {
+        this.$store.commit("login", {
+          code: '0000',
+          name: 'Guest'
+        });
+        this.$emit('setcookies');
+        this.$router.push('/home');
+      }
     }
   }
 });
@@ -205,7 +219,10 @@ var render = function () {
         [
           _c(
             "v-card",
-            { staticClass: "blue" },
+            {
+              staticStyle: { background: "linear-gradient(#f3f3f3,#b9b9b9)" },
+              attrs: { width: "300px" },
+            },
             [
               _c("v-card-text", { staticClass: "mt-2" }, [
                 _c(
@@ -235,7 +252,7 @@ var render = function () {
                           {
                             attrs: {
                               oninput:
-                                "this.value = this.value.replace(/[^0-9]/g, '').replace(/(\\..*?)\\..*/g, '$1');",
+                                "this.value = this.value.replace(/[^0-9]/g, '')",
                               outlined: "",
                               dense: "",
                               "background-color": "white",
@@ -332,6 +349,8 @@ var render = function () {
                           "v-text-field",
                           {
                             attrs: {
+                              oninput:
+                                "this.value = this.value.replace(/[ ]/g, '')",
                               outlined: "",
                               dense: "",
                               "background-color": "white",
