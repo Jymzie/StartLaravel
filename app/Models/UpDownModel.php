@@ -23,15 +23,16 @@ class UpDownModel extends Model
         $file = $req->file('image');
         $fileName = $file->getClientOriginalName();
         // $filePath = $file->store('uploads', 'public');
-        for($x=1;$x<10;$x++){
+        for($x=1;$x<21;$x++){
             if(!Storage::disk('public')->exists('uploads/'.$x.'.jpg')){
             $filePath = $file->storeAs(
                         'uploads',
                         $x.'.jpg',
                         'public'
                     );
+                    return $x;
             }
-            break;
+            
         }
       
         // return ['result'=>$this->dao_UpDown::InsertUpDown($file,$fileName,$filePath), 'status_code'=>200];

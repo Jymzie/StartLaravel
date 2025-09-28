@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="images/convert-icon.png">
     <style>
         /* NOTE use custom font from public folder */
         @font-face {
@@ -20,7 +20,7 @@
             font-style: normal;
         }
     </style>
-    <title>Title</title>
+    <title>File Converter</title>
 </head>
 <body>
     <div id="app"></div>

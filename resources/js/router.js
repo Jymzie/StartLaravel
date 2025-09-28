@@ -16,8 +16,8 @@ let router = new VueRouter({
             component: () => import('./components/Home'),
         },
         {
-            path: '/UpDown',
-            name: 'UpDown',
+            path: '/docbox',
+            name: 'docbox',
             component: () => import('./components/UpDown'),
         },
         {

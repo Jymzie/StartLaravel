@@ -59,7 +59,7 @@ class UpDownController extends Controller
     public function store(Request $req)
     {
         // try{
-            $return_val = $this->UpDown_model->InsertUpDown($req);
+            return $return_val = $this->UpDown_model->InsertUpDown($req);
             // return response()->json($return_val['result'], $return_val['status_code']);
         // }catch (\Exception $e) {
         //     $err_data = [

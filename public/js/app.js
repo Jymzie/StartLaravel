@@ -2245,39 +2245,16 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Home',
         icon: 'mdi-home',
         to: 'home'
-      }, {
-        text: 'CSS Grid',
-        icon: 'mdi-grid',
-        to: 'Grid'
-      }, {
-        text: 'Draggable',
-        icon: 'mdi-drag-variant',
-        to: 'Draggable'
-      }, {
-        text: 'Capture',
-        icon: 'mdi-camera',
-        to: 'Capture'
-      }, {
-        text: 'Play',
-        icon: 'mdi-play',
-        to: 'Play'
-      }, {
-        text: 'Queue',
-        icon: 'mdi-loading',
-        to: 'Queue'
-      }, {
-        text: 'Samples',
-        icon: 'mdi-note',
-        to: 'Test'
-      }, {
-        text: 'Master',
-        icon: 'mdi-monitor',
-        to: 'master'
-      }, {
-        text: 'Login',
-        icon: 'mdi-login',
-        to: 'login'
-      }]
+      }
+      // {text:'CSS Grid', icon:'mdi-grid', to:'Grid'},
+      // {text:'Draggable', icon:'mdi-drag-variant', to:'Draggable'},
+      // {text:'Capture', icon:'mdi-camera', to:'Capture'},
+      // {text:'Play', icon:'mdi-play', to:'Play'},
+      // {text:'Queue', icon:'mdi-loading', to:'Queue'},
+      // {text:'Samples', icon:'mdi-note', to:'Test'},
+      // {text:'Master', icon:'mdi-monitor', to:'master'},
+      // {text:'Login', icon:'mdi-login', to:'login'}
+      ]
     };
   },
   methods: {
@@ -2404,8 +2381,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
       return __webpack_require__.e(/*! import() */ "resources_js_components_Home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home */ "./resources/js/components/Home.vue"));
     }
   }, {
-    path: '/UpDown',
-    name: 'UpDown',
+    path: '/docbox',
+    name: 'docbox',
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_components_UpDown_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/UpDown */ "./resources/js/components/UpDown.vue"));
     }
@@ -30384,7 +30361,6 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "v-app",
-    { attrs: { id: "inspire" } },
     [
       _c(
         "v-navigation-drawer",
@@ -30463,215 +30439,30 @@ var render = function () {
                 "!$router.history.current.path.includes('/error') && $route.name != 'login'",
             },
           ],
+          staticStyle: { "background-color": "#4169E1", color: "white" },
           attrs: { "clipped-left": "", app: "" },
         },
         [
-          !_vm.$vuetify.breakpoint.xsOnly && !_vm.drawer
-            ? _c("v-app-bar-nav-icon", {
-                on: {
-                  click: function ($event) {
-                    _vm.drawer = !_vm.drawer
-                  },
-                },
-              })
-            : !_vm.$vuetify.breakpoint.xsOnly && _vm.drawer
-            ? _c(
-                "v-icon",
-                {
-                  staticClass: "mr-8",
-                  on: {
-                    click: function ($event) {
-                      _vm.drawer = !_vm.drawer
-                    },
-                  },
-                },
-                [_vm._v("mdi-close")]
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _c("v-toolbar-title", [_vm._v("Web Title")]),
+          _c("v-toolbar-title", [_vm._v("FConverter")]),
           _vm._v(" "),
           _c("v-spacer"),
           _vm._v(" "),
-          _c("img", {
-            staticClass: "rounded-circle mr-2",
-            attrs: {
-              width: "50",
-              height: "50",
-              src: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _vm._v(
-                "\n           " +
-                  _vm._s(
-                    _vm.$vuetify.breakpoint.xsOnly ? "" : "Jimwell C. Punzalan"
-                  ) +
-                  "\n\n           "
-              ),
-              _vm._v(" "),
-              !_vm.$vuetify.breakpoint.xsOnly
-                ? _c(
-                    "v-tooltip",
-                    {
-                      attrs: { bottom: "" },
-                      scopedSlots: _vm._u(
-                        [
-                          {
-                            key: "activator",
-                            fn: function (ref) {
-                              var on = ref.on
-                              var attrs = ref.attrs
-                              return [
-                                _c(
-                                  "v-icon",
-                                  _vm._g(
-                                    _vm._b(
-                                      {
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.mRouteto("/login")
-                                          },
-                                        },
-                                      },
-                                      "v-icon",
-                                      attrs,
-                                      false
-                                    ),
-                                    on
-                                  ),
-                                  [_vm._v("mdi-logout")]
-                                ),
-                              ]
-                            },
-                          },
-                        ],
-                        null,
-                        false,
-                        2087573908
-                      ),
-                    },
-                    [_vm._v(" "), _c("span", [_vm._v("Logout")])]
-                  )
-                : _c(
-                    "v-menu",
-                    {
-                      attrs: {
-                        "offset-y": "",
-                        "open-on-hover": "",
-                        "close-on-content-click": false,
-                      },
-                      scopedSlots: _vm._u([
-                        {
-                          key: "activator",
-                          fn: function (ref) {
-                            var on = ref.on
-                            var attrs = ref.attrs
-                            return [
-                              _c(
-                                "v-icon",
-                                _vm._g(
-                                  _vm._b(
-                                    { staticStyle: { color: "grey" } },
-                                    "v-icon",
-                                    attrs,
-                                    false
-                                  ),
-                                  on
-                                ),
-                                [
-                                  _vm._v(
-                                    "mdi-arrow-down-drop-circle\n                 "
-                                  ),
-                                ]
-                              ),
-                            ]
-                          },
-                        },
-                      ]),
-                    },
-                    [
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticStyle: {
-                            "max-height": "45vw",
-                            "min-height": "20vw",
-                          },
-                        },
-                        [
-                          _c(
-                            "v-list",
-                            [
-                              _vm._l(_vm.items, function (item, i) {
-                                return _c(
-                                  "v-list-item",
-                                  { key: i, attrs: { to: item.to } },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c("v-icon", [
-                                          _vm._v(_vm._s(item.icon)),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v(_vm._s(item.text)),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                )
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item",
-                                [
-                                  _c(
-                                    "v-list-item-icon",
-                                    [_c("v-icon", [_vm._v("mdi-logout")])],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-list-item-content", [
-                                    _vm._v(
-                                      "\n                          Logout\n                       "
-                                    ),
-                                  ]),
-                                ],
-                                1
-                              ),
-                            ],
-                            2
-                          ),
-                        ],
-                        1
-                      ),
-                    ]
-                  ),
-            ],
-            1
-          ),
+          _c("div"),
         ],
         1
       ),
       _vm._v(" "),
       _c(
         "v-main",
-        { staticClass: "ma-2" },
-        [_c("router-view", { on: { setcookies: _vm.mSetCookies } })],
+        [
+          _c("router-view", {
+            staticStyle: {
+              "background-image": "url(images/background.png)",
+              "background-size": "cover",
+            },
+            on: { setcookies: _vm.mSetCookies },
+          }),
+        ],
         1
       ),
     ],

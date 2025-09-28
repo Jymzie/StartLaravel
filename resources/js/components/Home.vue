@@ -1,60 +1,121 @@
 <template>
-   <div class="container">
-        <!-- First column -->
-        <div class="column">
-            <div class="item">Row 1, Col 1</div>
-            <div class="item">Row 2, Col 1</div>
-            <div class="item">Row 3, Col 1</div>
-        </div>
-        
-        <!-- Second column -->
-        <div class="column">
-            <div class="item">Row 1, Col 2</div>
-            <div class="item">Row 2, Col 2</div>
-            <div class="item">Row 3, Col 2</div>
-        </div>
+  <div :style="sStyle">
+      
+           
+           <v-dialog v-model="AddDialog" max-width="30%" persistent>
+                <v-card>
+                    <v-card-title class=" mb-4" style="background-color: #4169E1;color:white" >Convert Data <v-spacer/>
+                        <!-- <v-icon @click="mCloseAdd">mdi-close</v-icon> -->
+                    </v-card-title>
+                    <v-card-text>
+                                <v-file-input v-model="file"></v-file-input>
+              
+                        <v-btn block @click="mAddUpDown" :disabled="file==null ? true : false">
+                            <v-progress-circular
+                            color="primary"
+                            indeterminate
+                            v-show="uploading == true ? true : false"
+                            ></v-progress-circular>
 
-        <v-list>
-            <v-list-item v-for="(item, i) in SkillDesc" :key="i">
-                <v-tooltip bottom min-width="200" max-width="250">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-list-item-avatar  v-bind="attrs" v-on="on">
-                        <v-img src="https://cdn.vuetifyjs.com/images/lists/1.jpg"/>
-                        </v-list-item-avatar>
-                        <v-list-item-content>
-                            <v-list-item-title>{{ item.title }}</v-list-item-title>
-                        </v-list-item-content>
-                    </template>
-                        <span  >{{ item.desc }}</span>
-                </v-tooltip>
-            </v-list-item>
-        </v-list>
+                             Convert</v-btn>
+                    </v-card-text>
+                    
+                </v-card>
+              
+           </v-dialog>
+     
    </div>
 </template>
 
 <script>
 export default {
-  // ANCHOR DATA
-  data:() => ({
-        SkillDesc:[{title:'Adaptability',desc:'HyperText Markup Language is a standardized markup language that creates the fundamental structure of web pages by using tags to organize and format content that web browsers can interpret and display.'},
-        {title:'Communication',desc:'Cascading Style Sheets is a styling language that controls how web pages look and feel, allowing you to transform plain HTML content into beautifully formatted and responsive designs.'},
-        {title:'Creativity',desc:'A versatile programming language that brings websites to life by adding interactivity to web pages, allowing developers to create dynamic content, respond to user actions, and update information instantly without requiring page reloads.'},
-        {title:'Problem Solving',desc:'A versatile programming language that brings websites to life by adding interactivity to web pages, allowing developers to create dynamic content, respond to user actions, and update information instantly without requiring page reloads.'},
-        {title:'Time Management',desc:'A versatile programming language that brings websites to life by adding interactivity to web pages, allowing developers to create dynamic content, respond to user actions, and update information instantly without requiring page reloads.'}]
-        
-    }),
+    data(){
+        return{
+            UpDownTableHeader:['Name','Actions'],
+            UpDownTableData:[{filename:1+'.jpg'},{filename:2+'.jpg'},{filename:3+'.jpg'},{filename:4+'.jpg'}],
+            file:null,
+            AddDialog:true,
+            uploading:false,
+            filename:''
+        }
+    },
+    created(){
+        // this.mUpDown()
+    },
+    methods:{
+        mUpDown(){
+            axios.get(`${this.$url}/api/UpDown`)
+            .then(res=>{
+                this.UpDownTableData = res.data
+            }).catch(({response})=>{
+                this.$store.dispatch('setStatusCode', response.status)
+                this.$router.push('/error/' + response.status)
+            })
+        },
+        mShowAdd(){
+            this.AddDialog = true
+        },
+        mCloseAdd(){
+            // this.AddDialog = false
+            this.file = null
+        },
+        mAddUpDown(){
+           const formData = new FormData()
+           formData.append("image",this.file)
+           console.log(formData)
+           this.uploading = true
+                axios.post(`${this.$url}/api/UpDown`,formData)
+                .then(res => {
+                    this.uploading = false
+                    alert('Reading data... Please wait!')
+                    this.mCloseAdd()
+                    // this.mUpDown()
+                    // this.mEmployeeList()
+                }).catch(({response})=>{
+                    if(response.status == 400){
+                        console.log(response)
+                        alert(response.data)
+                    }else{
+                        this.$store.dispatch('setStatusCode', response.status)
+                        this.$router.push('/error/' + response.status)
+                    }
+                })
+            
+            
+        },
+        mDownload(item){
+            this.filename = item.filename
+            this.uploading = true
+            axios.get(`${this.$url}/api/UpDown/create?filename=${item.filename}`, {responseType: 'blob'})
+            .then(res => {
+                
+                const url = window.URL.createObjectURL(new Blob([res.data]))
+                const link = document.createElement("a");
+                link.href = url
+                link.setAttribute("download", item.filename)
+                document.body.appendChild(link)
+                link.click();
+                link.remove();
+                 this.uploading = false
+                 this.filename = ''
+                }).catch(({response})=>{
+                    if(response.status == 400){
+                        console.log(response)
+                        alert(response.data)
+                    }else{
+                        this.$store.dispatch('setStatusCode', response.status)
+                        this.$router.push('/error/' + response.status)
+                    }
+                })
+        }
+         
+    },
+       computed:{
+         sStyle(){
+            return {
+                height: this.$vuetify.breakpoint.height+'px'
+            }
+        }
+    }
 }
 </script>
-
-<style>
-
-
-/* Make each column behave like a table cell */
-.column {
-    display: table-cell;
- 
-}
-
-/* Make each item in the column behave like a block */
-
-</style>

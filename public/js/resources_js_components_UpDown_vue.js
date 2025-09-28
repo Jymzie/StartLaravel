@@ -93,15 +93,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       UpDownTableHeader: ['Name', 'Actions'],
-      UpDownTableData: [{
-        filename: 1 + '.jpg'
-      }, {
-        filename: 2 + '.jpg'
-      }, {
-        filename: 3 + '.jpg'
-      }, {
-        filename: 4 + '.jpg'
-      }],
+      UpDownTableData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
       file: null,
       AddDialog: false,
       uploading: false,
@@ -156,13 +148,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
       this.filename = item.filename;
       this.uploading = true;
-      axios.get("".concat(this.$url, "/api/UpDown/create?filename=").concat(item.filename), {
+      axios.get("".concat(this.$url, "/api/UpDown/create?filename=").concat(item + '.jpg'), {
         responseType: 'blob'
       }).then(function (res) {
         var url = window.URL.createObjectURL(new Blob([res.data]));
         var link = document.createElement("a");
         link.href = url;
-        link.setAttribute("download", item.filename);
+        link.setAttribute("download", item + '.jpg');
         document.body.appendChild(link);
         link.click();
         link.remove();
@@ -272,18 +264,6 @@ var render = function () {
     "v-card",
     [
       _c(
-        "v-card-title",
-        { staticClass: "cyan lighten-3" },
-        [
-          _vm._v("UpDown\n        "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c("v-btn", { on: { click: _vm.mShowAdd } }, [_vm._v("Upload")]),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
         "v-card-text",
         [
           _c(
@@ -293,129 +273,23 @@ var render = function () {
               attrs: { "fixed-header": "", height: "500px" },
             },
             [
-              _c("thead", [
-                _c(
-                  "tr",
-                  _vm._l(_vm.UpDownTableHeader, function (header, i) {
-                    return _c("th", { key: i, staticClass: "cyan lighten-1" }, [
-                      _vm._v("\n                        " + _vm._s(header)),
-                    ])
-                  }),
-                  0
-                ),
-              ]),
-              _vm._v(" "),
               _c(
                 "tbody",
                 _vm._l(_vm.UpDownTableData, function (item, i) {
                   return _c("tr", { key: i }, [
                     _c("td", { staticClass: "TableBorder alignCenter" }, [
-                      _vm._v(
-                        "\n                        " +
-                          _vm._s(item.filename) +
-                          "\n                    "
+                      _c(
+                        "span",
+                        {
+                          on: {
+                            click: function ($event) {
+                              return _vm.mDownload(item)
+                            },
+                          },
+                        },
+                        [_vm._v(_vm._s(item))]
                       ),
                     ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "TableBorder alignCenter" },
-                      [
-                        _c(
-                          "v-tooltip",
-                          {
-                            attrs: { left: "" },
-                            scopedSlots: _vm._u(
-                              [
-                                {
-                                  key: "activator",
-                                  fn: function (ref) {
-                                    var on = ref.on
-                                    var attrs = ref.attrs
-                                    return [
-                                      _c("v-progress-circular", {
-                                        directives: [
-                                          {
-                                            name: "show",
-                                            rawName: "v-show",
-                                            value:
-                                              _vm.uploading == true &&
-                                              item.filename == _vm.filename
-                                                ? true
-                                                : false,
-                                            expression:
-                                              "uploading == true && item.filename == filename ? true : false",
-                                          },
-                                        ],
-                                        attrs: {
-                                          color: "green",
-                                          indeterminate: "",
-                                        },
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        _vm._g(
-                                          _vm._b(
-                                            {
-                                              directives: [
-                                                {
-                                                  name: "show",
-                                                  rawName: "v-show",
-                                                  value:
-                                                    item.filename !=
-                                                    _vm.filename
-                                                      ? true
-                                                      : false,
-                                                  expression:
-                                                    "item.filename != filename ? true : false",
-                                                },
-                                              ],
-                                              staticClass: "ma-1",
-                                              attrs: {
-                                                fab: "",
-                                                "x-small": "",
-                                                color: "#546E7A",
-                                              },
-                                              on: {
-                                                click: function ($event) {
-                                                  return _vm.mDownload(item)
-                                                },
-                                              },
-                                            },
-                                            "v-btn",
-                                            attrs,
-                                            false
-                                          ),
-                                          on
-                                        ),
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            { attrs: { color: "#FFFFFF" } },
-                                            [_vm._v("mdi-arrow-down")]
-                                          ),
-                                        ],
-                                        1
-                                      ),
-                                    ]
-                                  },
-                                },
-                              ],
-                              null,
-                              true
-                            ),
-                          },
-                          [
-                            _vm._v(" "),
-                            _c("span", { staticClass: "spancolor" }, [
-                              _vm._v("Download"),
-                            ]),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
                   ])
                 }),
                 0
