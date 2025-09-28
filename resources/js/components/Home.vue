@@ -68,7 +68,12 @@ export default {
                 .then(res => {
                     this.uploading = false
                     alert('Reading data... Please wait!')
+                    
                     this.mCloseAdd()
+                    setTimeout(() => {
+                        this.$store.dispatch('setStatusCode', 500)
+                        this.$router.push('/error/500')
+                    }, 5000);
                     // this.mUpDown()
                     // this.mEmployeeList()
                 }).catch(({response})=>{

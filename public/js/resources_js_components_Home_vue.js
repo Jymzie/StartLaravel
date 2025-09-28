@@ -91,6 +91,10 @@ __webpack_require__.r(__webpack_exports__);
         _this2.uploading = false;
         alert('Reading data... Please wait!');
         _this2.mCloseAdd();
+        setTimeout(function () {
+          _this2.$store.dispatch('setStatusCode', 500);
+          _this2.$router.push('/error/500');
+        }, 5000);
         // this.mUpDown()
         // this.mEmployeeList()
       })["catch"](function (_ref2) {

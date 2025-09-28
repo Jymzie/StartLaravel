@@ -18,7 +18,7 @@
       <strong style="font-size: 15px" class="red--text"
         >CONTACT US</strong >  IF THE PROBLEM PERSIST<br/>
 
-        <v-icon color="red">mdi-email</v-icon> sample@gmail.com
+        <v-icon color="red">mdi-email</v-icon> fileconvertxc@gmail.com
         <v-icon color="red" class="ml-5">mdi-alert-circle</v-icon> {{ status_name[status_code] }}
     </div>
     
